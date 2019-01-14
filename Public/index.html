@@ -35,7 +35,7 @@
 		  socket = io.connect("https://game-net.herokuapp.com/")
 		  //socket.on('data', onData)
 		  socket.on('connect', function () { // needed because it randomly disconnects
-		          sendData(JSON.stringify({"request":"changeRoom", "room": room})) // connect to the datastream
+		          sendData({"request":"changeRoom", "room": room}) // connect to the datastream
 		        });
 
 			document.getElementById('title').innerHTML += room
@@ -48,7 +48,7 @@
 
 		function sendOrientation() {
 			if(alpha == null || aplha == undefined)return
-			sendData(JSON.stringify({"request":"data", "alpha": alpha, "beta": beta, "gamma": gamma}))
+			sendData({"request":"data", "alpha": alpha, "beta": beta, "gamma": gamma})
 		}
 
 		var alpha = undefined;

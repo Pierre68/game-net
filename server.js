@@ -2,7 +2,9 @@ console.log("launching app game-net")
 const server_version = "0.0.1"
 
 var express = require('express')
-var socket = require('socket.io')
+var socket = require('socket.io'){
+	transports: ['websocket'],
+});
 
 var app = express()
 var SERVER_PORT = process.env.PORT || 8080
@@ -37,7 +39,6 @@ function newConnection(socket) {
     console.log(data);
     //socket.broadcast.emit('message', data) // only others
     //io.sockets.emit('message', data) //everyone connected
-
   }
 
   function clientData(dataString) {
@@ -60,6 +61,7 @@ function newConnection(socket) {
 
   function clientDisconnection(data) {
     connections--;
+    console.log(data)
     //io.to("room").emit('message', 'users online:' + connections)
   }
 

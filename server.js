@@ -16,9 +16,7 @@ console.log("server version " + server_version);
 
 //var io = socket(server)
 
-var io = require('socket.io')({
-	transports: ['websocket'],
-});
+var io = require('socket.io')
 
 io.on('connection', newConnection)
 

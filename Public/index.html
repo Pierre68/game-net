@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Controller</title>
+		<link rel="stylesheet" href="style.css" type="text/css">
+	</head>
+	<body>
+
+	<h1>Orientation API</h1>
+
+	<div id="wrap">
+
+		<div id="log">
+		<ul>
+			<li>Aplha : </li>
+			<li>Beta : </li>
+			<li>Gamma : </li>
+		</ul>
+		</div>
+
+	</div>
+
+		<script>
+
+		function process(event) {
+			var alpha = event.alpha;
+			var beta = event.beta;
+			var gamma = event.gamma;
+			document.getElementById('log').innerHTML = "<ul><li>Alpha : " + alpha + "</li><li>Beta : " + beta + "</li><li>Gamma : " + gamma + "</li></ul>";
+		}
+
+		if(window.DeviceOrientationEvent) {
+			window.addEventListener("deviceorientation", process, true);
+		} else {
+			document.getElementById('log').innerHTML += '<p class="warning">Votre navigateur ne semble pas supporter <code>deviceorientation</code></p>';
+		}
+
+		</script>
+	</body>
+</html>

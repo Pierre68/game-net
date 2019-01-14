@@ -36,7 +36,7 @@ function newConnection(socket) {
   //on connection
   socket.join("room")
   //send test message
-  io.to("room").emit('message', 'users online:' + connections)
+  io.to("room").emit('message', JSON.parse('{"users_online":' + connections + '}')) // No string only accept JSON !!
 
   function clientMessage(data) {
     console.log(data);
@@ -46,14 +46,14 @@ function newConnection(socket) {
 
   function clientData(dataString) {
     try {
-      var data = JSON.parse(dataString)
+      var data = dataString
 
       if (data.request == "changeRoom") {
         changeRoom(data)
 
       }else if (data.request == "data"){
         var room = io.sockets.manager.roomClients[socket.id]
-        io.to(room).emit('data', JSON.stringify(data))
+        io.to(room).emit('data', data)
       }
 
     } catch (e) {

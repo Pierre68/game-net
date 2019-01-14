@@ -2,9 +2,7 @@ console.log("launching app game-net")
 const server_version = "0.0.1"
 
 var express = require('express')
-var socket = require('socket.io'){
-	transports: ['websocket'],
-});
+//var socket = require('socket.io')
 
 var app = express()
 var SERVER_PORT = process.env.PORT || 8080
@@ -16,8 +14,13 @@ console.log("server version " + server_version);
 
 //=============================================================================
 
-var io = socket(server)
-io.sockets.on('connection', newConnection)
+//var io = socket(server)
+
+var io = require('socket.io')({
+	transports: ['websocket'],
+});
+
+io.on('connection', newConnection)
 
 var connections = 0
 

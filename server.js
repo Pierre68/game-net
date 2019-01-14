@@ -8,7 +8,7 @@ var app = express()
 var SERVER_PORT = process.env.PORT || 8080
 var server = app.listen(SERVER_PORT)
 console.log("........... on port : " + SERVER_PORT);
-app.use(express.static('public'))
+app.use(express.static('Public'))
 
 console.log("server version " + server_version);
 

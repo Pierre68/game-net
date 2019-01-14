@@ -18,7 +18,7 @@ var io = socket(server)
 
 //var io = require('socket.io')
 
-io.socket.on('connection', newConnection)
+io.sockets.on('connection', newConnection)
 
 var connections = 0
 

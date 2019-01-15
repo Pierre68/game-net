@@ -54,7 +54,7 @@ function newConnection(socket) {
         for (var x in socket.rooms) {
           index.push(x);
         }
-        var room = index[3]
+        var room = index
         console.log("sending to room " + room);
         io.to(room).emit('data', data)
       }

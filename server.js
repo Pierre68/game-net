@@ -55,7 +55,7 @@ function newConnection(socket) {
           index.push(x);
         }
         var room = index[2]
-        console.log("sending to room " + room);
+        //console.log("sending to room " + room);
         io.to(room).emit('data', data)
       }
 

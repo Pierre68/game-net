@@ -50,7 +50,7 @@ function newConnection(socket) {
         changeRoom(data)
 
       }else if (data.request == "data"){
-        var room = socket.rooms
+        var room = JSON.stringify(socket.rooms)
         console.log("sending to room " + room);
         io.to(room).emit('data', data)
       }

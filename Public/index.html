@@ -47,7 +47,10 @@
 		}
 
 		function sendOrientation() {
-			if(alpha == null || aplha == undefined)return
+			if(alpha == null || aplha == undefined){
+				console.log("undefined");
+				return
+			}
 			sendData({"request":"data", "alpha": alpha, "beta": beta, "gamma": gamma})
 		}
 

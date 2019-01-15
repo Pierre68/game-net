@@ -42,7 +42,7 @@ function newConnection(socket) {
   }
 
   function clientData(dataString) {
-    console.log(dataString);
+    //console.log(dataString);
     try {
       var data = dataString
 
@@ -50,7 +50,8 @@ function newConnection(socket) {
         changeRoom(data)
 
       }else if (data.request == "data"){
-        var room = io.sockets.manager.roomClients[socket.id]
+        var room = socket.rooms[0]
+        console.log("sending to room " + room);
         io.to(room).emit('data', data)
       }
 

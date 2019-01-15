@@ -13,10 +13,9 @@ app.use(express.static('Public'))
 console.log("server version " + server_version);
 
 //=============================================================================
+// unity connection URL ! wss://game-net.herokuapp.com/socket.io/?EIO=4&transport=websocket
 
 var io = socket(server)
-
-//var io = require('socket.io')
 
 io.sockets.on('connection', newConnection)
 
@@ -34,7 +33,7 @@ function newConnection(socket) {
   //on connection
   socket.join("room")
   //send test message
-  //io.to("room").emit('message', JSON.parse('{"users_online":' + connections + '}')) // No string only accept JSON !!
+  io.to("room").emit('message', JSON.parse('{"users_online":' + connections + '}')) // No string only accept JSON !!
 
   function clientMessage(data) {
     console.log(data);
